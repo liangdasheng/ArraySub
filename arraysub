@@ -1,0 +1,49 @@
+public class ArraySub{
+	//数组截取
+	//[start, end)
+	public static int[] arraySub(int[] data, int start , int end){
+        //必须先判断条件
+		if(((start < 0)||(end > data.length))||(start > end)){
+			System.out.print("截取从"+start+"开始到"+end+"结束的新数组：");
+			System.out.println("数字非法！！！");
+			return null;
+		}else{
+			int[] arr = new int[end - start];
+			//注意该条件的位置，如果满足(start>end)，就不会new一个新数组，自然会报错
+			System.arraycopy(data,start,arr,0,arr.length);
+			System.out.print("截取从"+start+"开始到"+end+"结束的新数组：");
+			printArray(arr);
+			return arr;
+		}
+    }
+    
+    //数组打印
+    public static void printArray(int[] data){
+		for(int i = 0; i < data.length; i++){
+		System.out.print(data[i]+" ");
+		}
+	}
+	
+	public static void main(String[] args){
+        //测试 
+		System.out.println("选用数组为：");
+		
+		int[] array1 = new int[] {8,7,6,5,4,3,2,1};
+		
+		System.out.print("要截取的数组：");
+		printArray(array1);
+		System.out.println();
+		arraySub(array1, -1, 6);
+		System.out.println();
+		
+		arraySub(array1, 6, 1);
+		System.out.println();
+		
+		arraySub(array1, 2, 10);
+		System.out.println();
+		
+		arraySub(array1, 1, 6);
+		System.out.println();
+		
+	}
+}
